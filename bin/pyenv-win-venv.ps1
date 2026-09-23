@@ -27,7 +27,6 @@ if ($CalledFromCMD) {
 else {
     $invokedShell = "ps1"
 }
-Write-Debug-Log "Detected Shell: $invokedShell"
 
 $app_dir = Resolve-Path "$PSScriptRoot" | Split-Path
 $app_env_dir = "$app_dir\envs"
@@ -37,6 +36,7 @@ $pyenv_versions_dir = "$env:PYENV_HOME\versions"
 $python_version_file = "$((Get-Location).Path)\.python-version"
 function  main {
     AppDirInit # Initialize the app directories
+    Write-Debug-Log "Detected Shell: $invokedShell"
     Write-Debug-Log "App Dir: $app_dir"
     Write-Debug-Log "App Env Dir: $app_env_dir"
     Write-Debug-Log "CLI Version: $cli_version"
